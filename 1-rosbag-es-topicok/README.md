@@ -1,5 +1,16 @@
 # Rosbag gyakorlás
 
+## Tartalom
+- [Előkészületek, rosbag visszajátszása](#elo)
+- [Topicok elérése - terminalból](#term)
+- [Topicok elérése - rqt_plot](#rqtplot)
+- [Topicok elérése - rviz](#rviz)
+- [Topicok elérése - saját python kóddal](#python)
+
+<a name="elo"></a>
+
+## Előkészületek
+
 Nyissunk egy terminált (`ctr`+`alt`+`t`), hozzunk létre egy `rosbag-gyak` mappát, majd lépjünk bele.
 
 ```
@@ -30,12 +41,15 @@ A terminalban indítsunk egy `roscore`-t.
 roscore
 ```
 
-Nyissunk egy újabb tabot a terminálban (`ctr`+`shift`+`t`). Ha nem `rosbag-gyak`-ban lennénk, `cd`-zzünk.
+Nyissunk egy újabb tabot a terminálban (`ctr`+`shift`+`t`). Ha nem `rosbag-gyak`-ban lennénk, `cd`-zzünk. A `-l` kapcsoló loopolja a bag-et, a `play` mondja meg, hogy lejátszuk és nem például rögzítjük a bag-et.
 
 ```
 cd ~/rosbag-gyak
 rosbag play -l turtlebot-2019-03-11-SLAM-no-camera.bag 
 ```
+<a name="term"></a>
+
+## Topicok terminalból
 
 Nyissunk egy újabb tabot a terminálban (`ctr`+`shift`+`t`), majd vizsgáljuik meg a topicokat.
 
@@ -170,7 +184,24 @@ rostopic echo /odom
         z: 0.0535195507109
     covariance: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 ```
+<a name="rqtplot"></a>
 
+## rqt_plot
+
+Indítsuk az rqt_plot-ot terminalbol, adjuk hozzá például az `/imu/linear_acceleration` topciot. 
+_Megjegyzés_: az rosbag visszajátszásánál nem állítottuk be, hogy időt generáljon (pedig lehetne), de így a mérés a ploton újrakezdődhet.
+
+```
+rqt_plot
+```
+
+![rqtp](rqtplot-small.png)
+
+További információ: http://wiki.ros.org/rqt_plot
+
+<a name="rviz"></a>
+
+## rviz
 
 Indítsuk az rviz-t.
 
@@ -182,3 +213,52 @@ Adjunk hozzá különböző topicokat: `Add` >> `By topic` >> Kiválaszt >> `Ok`
 Például így nézzen ki:
 
 ![rviz](rviz-small.png)
+
+További információ: http://wiki.ros.org/rviz
+
+<a name="python"></a>
+
+## python
+
+A következőkben a [listener.py](listener.py) segítségével feliratkozunk az `/odom` és az `/imu` topicokra és első körben kiíratjuk az odom x és y pozícióját, valamint az imu lineáris gyorsulásait. Anonymous módon feliratkozunk a két topcira, `listener` névvel (a név gyakolratilag mellékes). Két úgynevazett callback fügvényt használunk a feliratkzáshoz.
+
+``` python
+import rospy
+import std_msgs.msg as rosmsg
+import nav_msgs.msg as navmsg
+import sensor_msgs.msg as senmsg
+
+def odometryCallBack(msg):
+    print("odom(x,y): %8.4f %8.4f " % (msg.pose.pose.position.x, msg.pose.pose.position.y))
+
+def imuCallBack(msg):
+    print("imu(xyz):  %8.4f %8.4f %8.4f" % (msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z))
+
+rospy.init_node("/listener", anonymous=True)
+rospy.Subscriber("/odom", navmsg.Odometry, odometryCallBack)
+rospy.Subscriber("/imu", senmsg.Imu, imuCallBack)
+rospy.spin()
+```
+
+Ha nem szeretnénk klónozni a teljes repository-t, akkor `wget`-tel is letölthetjük a [listener.py](listener.py)-t és a [plotter.py](plotter.py)-t.
+
+```
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/listener.py
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotter.py
+```
+
+A [plotter.py](plotter.py) hasonló az előzőhöz, de terminal helyett GUI-ba írja az adatokat. A `pyqt` és a `pyqtgraph` segítségével felhasználói felületeket készíthetünk, amiket nem csupán scripként, de futtatható állományként, vagy akár telepítőként is használhatunk. Első lépésként ellenőrizzük, hogy telepítve vannak-e a szükséges package-k, a következő importokkal:
+
+``` python
+import PyQt5
+import pyqtgraph
+```
+
+Amennyiben `ModuleNotFoundError`-t kapunk telepítsük a két package-t:
+
+```
+pip install pyqt5
+pip install pyqtgraph
+```
+
+![plot](py-plotter.png)
