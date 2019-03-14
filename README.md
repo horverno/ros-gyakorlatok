@@ -18,6 +18,7 @@ Az leckék magyar nyelvűek. :mortar_board:
     - Topicok kezelése
     - Topic tartalmának elérése pythonból
     - rviz
+    - rqt_plot
     - Rosbag készítés
 2. ROS node-ok készítése pythonban és C++-ban - [`2-ros-node-tobb-nyelven`](2-ros-node-tobb-nyelven)
     - ROS node-ok

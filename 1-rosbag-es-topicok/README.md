@@ -192,7 +192,7 @@ Indítsuk az rqt_plot-ot terminalbol, adjuk hozzá például az `/imu/linear_acc
 _Megjegyzés_: az rosbag visszajátszásánál nem állítottuk be, hogy időt generáljon (pedig lehetne), de így a mérés a ploton újrakezdődhet.
 
 ```
-rqt_plot
+rosrun rqt_plot rqt_plot
 ```
 
 ![rqtp](rqtplot-small.png)
@@ -257,8 +257,16 @@ import pyqtgraph
 Amennyiben `ModuleNotFoundError`-t kapunk telepítsük a két package-t:
 
 ```
+sudo apt install python-pip
 pip install pyqt5
 pip install pyqtgraph
 ```
 
 ![plot](py-plotter.png)
+
+Vizsgáljuk meg a fájokat `VS code` segítségével (`cd ~/rosbag-gyak`, ha nem ott lennénk)
+
+```
+code .
+```
+Ez egy VS code környezetet nyit meg, az aktuális mappával, majd visszaadja a terminal prompt-ot.
