@@ -11,6 +11,10 @@
 
 ## Előkészületek
 
+A következő példák egy Turtlebot3 robot és egy Nissan Leaf önvezető autó `.bag` fájlait használják majd. A `.bag` az ROS log fájtípusa, méréseket mentésére, visszajátszására, szerkeztésére stb. szolgál.
+
+![turtle-leaf](turtle-leaf.png)
+
 Nyissunk egy terminált (`ctr`+`alt`+`t`), hozzunk létre egy `rosbag-gyak` mappát, majd lépjünk bele.
 
 ```
@@ -18,20 +22,22 @@ mkdir ~/rosbag-gyak
 cd ~/rosbag-gyak
 ```
 
-Töltsünk le egy rosbag fájlt.
+Töltsük le a 2 rosbag fájlt.
 
 ```
 wget www.sze.hu/~herno/PublicDataAutonomous/turtlebot-2019-03-11-SLAM-no-camera.bag
 ```
 
-Vizsgáljuk meg, hogy tényleg ~46MB méretű-e a `.bag` fájl.
+Vizsgáljuk meg, hogy tényleg ~46MB méretű-e Turtlebot és `.bag` fájl.
 
 ```
 ls -l
 ls -l --block-size=M
 ```
 
-Nézzük meg a következő videót, ez a `.bag` fájl rögzítésekor készült: [youtu.be/QwagQFvhbNU](https://www.youtube.com/watch?v=QwagQFvhbNU)
+Nézzük meg a következő videót, ez a Turtlebot `.bag` fájl rögzítésekor készült: [youtu.be/QwagQFvhbNU](https://www.youtube.com/watch?v=QwagQFvhbNU) 
+
+[![turtle-yt](turtle-youtube.png)](https://www.youtube.com/watch?v=QwagQFvhbNU) []
 
 _Megjegyzés_: www.sze.hu/~herno/PublicDataAutonomous linken további `.bag` fájlok találhatóak.
 
@@ -111,10 +117,15 @@ Ezt kellene látnunk.
 ```
 
 Vizsgáljunk meg minél több topicot `rostopic type` illetve `rosmsg show`-val.
+A `rostopic type /odom` parancs hatására megtudhatjuk az `/odom` topic típusát, ami `nav_msgs/Odometry`. 
+Ha ki akarjuk deríteni a `nav_msgs/Odometry` felépítését a `rosmsg show nav_msgs/Odometry`-re lesz szükségünk.
+A két parancsot kényelmesebb egybe kiadni, az első parancs kimenete lesz a második eleje egy `|`- karakter segítségével, az egész egyben pedig így néz ki:
 
 ```
 rostopic type /odom | rosmsg show
 ```
+
+Erre megkapjuk, ugyanazt, mint a `rosmsg show nav_msgs/Odometry`-val, is kapunk, tehát az odometria üzenet felépítését.
 
 ``` c
     std_msgs/Header header
@@ -220,7 +231,7 @@ További információ: http://wiki.ros.org/rviz
 
 ## python
 
-A következőkben a [listener.py](listener.py) segítségével feliratkozunk az `/odom` és az `/imu` topicokra és első körben kiíratjuk az odom x és y pozícióját, valamint az imu lineáris gyorsulásait. Anonymous módon feliratkozunk a két topcira, `listener` névvel (a név gyakolratilag mellékes). Két úgynevazett callback fügvényt használunk a feliratkzáshoz.
+A következőkben a [listenerTurtle.py](listenerTurtle.py) segítségével feliratkozunk az `/odom` és az `/imu` topicokra és első körben kiíratjuk az odom x és y pozícióját, valamint az imu lineáris gyorsulásait. Anonymous módon feliratkozunk a két topcira, `listener` névvel (a név gyakolratilag mellékes). Két úgynevazett callback fügvényt használunk a feliratkzáshoz.
 
 ``` python
 import rospy
@@ -240,14 +251,14 @@ rospy.Subscriber("/imu", senmsg.Imu, imuCallBack)
 rospy.spin()
 ```
 
-Ha nem szeretnénk klónozni a teljes repository-t, akkor `wget`-tel is letölthetjük a [listener.py](listener.py)-t és a [plotter.py](plotter.py)-t.
+Ha nem szeretnénk klónozni a teljes repository-t, akkor `wget`-tel is letölthetjük a [listenerTurtle.py](listenerTurtle.py)-t és a [plotterTurtle.py](plotterTurtle.py)-t.
 
 ```
-wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/listener.py
-wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotter.py
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/listenerTurtle.py
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotterTurtle.py
 ```
 
-A [plotter.py](plotter.py) hasonló az előzőhöz, de terminal helyett GUI-ba írja az adatokat. A `pyqt` és a `pyqtgraph` segítségével felhasználói felületeket készíthetünk, amiket nem csupán scripként, de futtatható állományként, vagy akár telepítőként is használhatunk. Első lépésként ellenőrizzük, hogy telepítve vannak-e a szükséges package-k, a következő importokkal:
+A [plotterTurtle.py](plotterTurtle.py) hasonló az előzőhöz, de terminal helyett GUI-ba írja az adatokat. A `pyqt` és a `pyqtgraph` segítségével felhasználói felületeket készíthetünk, amiket nem csupán scripként, de futtatható állományként, vagy akár telepítőként is használhatunk. Első lépésként ellenőrizzük, hogy telepítve vannak-e a szükséges package-k, a következő importokkal:
 
 ``` python
 import PyQt5
