@@ -26,9 +26,10 @@ Töltsük le a 2 rosbag fájlt.
 
 ```
 wget www.sze.hu/~herno/PublicDataAutonomous/turtlebot-2019-03-11-SLAM-no-camera.bag
+wget www.sze.hu/~herno/PublicDataAutonomous/leaf-2019-03-13-a-no-lidar.bag
 ```
 
-Vizsgáljuk meg, hogy tényleg ~46MB méretű-e Turtlebot és `.bag` fájl.
+Vizsgáljuk meg, hogy tényleg ~46MB méretű-e Turtlebot és ~9MB méretű-e a Leaf `.bag` fájl.
 
 ```
 ls -l
@@ -41,7 +42,7 @@ Nézzük meg a következő videót, ez a Turtlebot `.bag` fájl rögzítésekor 
 
 _Megjegyzés_: www.sze.hu/~herno/PublicDataAutonomous linken további `.bag` fájlok találhatóak.
 
-A terminalban indítsunk egy `roscore`-t.
+A terminalban indítsunk egy `roscore`-t. *Később* leááítható `ctr` + `c` segítségével.
 
 ```
 roscore
@@ -53,6 +54,9 @@ Nyissunk egy újabb tabot a terminálban (`ctr`+`shift`+`t`). Ha nem `rosbag-gya
 cd ~/rosbag-gyak
 rosbag play -l turtlebot-2019-03-11-SLAM-no-camera.bag 
 ```
+
+Később ugyanígy játszhatjuk le a `leaf-2019-03-13-a-no-lidar.bag`-et is.
+
 <a name="term"></a>
 
 ## Topicok terminalból
@@ -251,14 +255,15 @@ rospy.Subscriber("/imu", senmsg.Imu, imuCallBack)
 rospy.spin()
 ```
 
-Ha nem szeretnénk klónozni a teljes repository-t, akkor `wget`-tel is letölthetjük a [listenerTurtle.py](listenerTurtle.py)-t és a [plotterTurtle.py](plotterTurtle.py)-t.
+Ha nem szeretnénk klónozni a teljes repository-t, akkor `wget`-tel is letölthetjük a [listenerTurtle.py](listenerTurtle.py)-t, a [plotterLeaf.py](plotterLeaf.py)-t és a [plotterTurtle.py](plotterTurtle.py)-t.
 
 ```
 wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/listenerTurtle.py
 wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotterTurtle.py
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotterLeaf.py
 ```
 
-A [plotterTurtle.py](plotterTurtle.py) hasonló az előzőhöz, de terminal helyett GUI-ba írja az adatokat. A `pyqt` és a `pyqtgraph` segítségével felhasználói felületeket készíthetünk, amiket nem csupán scripként, de futtatható állományként, vagy akár telepítőként is használhatunk. Első lépésként ellenőrizzük, hogy telepítve vannak-e a szükséges package-k, a következő importokkal:
+A [plotterTurtle.py](plotterTurtle.py) és a [plotterLeaf.py](plotterLeaf.py) hasonló az előzőhöz, de terminal helyett GUI-ba írja az adatokat. A `pyqt` és a `pyqtgraph` segítségével felhasználói felületeket készíthetünk, amiket nem csupán scripként, de futtatható állományként, vagy akár telepítőként is használhatunk. Első lépésként ellenőrizzük, hogy telepítve vannak-e a szükséges package-k, a következő importokkal:
 
 ``` python
 import PyQt5
@@ -273,7 +278,14 @@ pip install pyqt5
 pip install pyqtgraph
 ```
 
-![plot](py-plotter.png)
+A Nissan leaf helyzetét több fajta módon is számíthatjuk. Lehet a bicikli kinematikai modellel és lehet a GPS alapján. A gépjármű-szerű (négy kerékkel rendelkező, első tengelyen kormányozható) robot egyszerűsített kinematikai leírására használhatjuk a bicikli modellt, ami könnyen szmolható, azonban az idő függvényében egyre nagyobb pontatlansága lesz. Ez a `/leaf/odom` topicon érhető el a Leaf .bag fájl visszajátszásával. A GPS pozíció magától érthetődőbb, szerencsére a mérés során egy különlegesen pontos GPS-t használtunk, ez a `/gps/odom` topicon érhető el. 
+Vizualizáljuk a két topicot a [plotterLeaf.py](plotterLeaf.py) segítségével.
+
+![plot](py-plotter-leaf.png)
+
+Sokkal összetetteb dolgot is megvalósíthatunk a Turtlebot .bag fájl visszajátszásával. Itt nagyon sok topicot vizualizálhatunk. 
+
+![plot](py-plotter-turtle.png)
 
 Vizsgáljuk meg a fájokat `VS code` segítségével (`cd ~/rosbag-gyak`, ha nem ott lennénk)
 

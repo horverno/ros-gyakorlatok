@@ -22,39 +22,44 @@ class PlotHandler(object):
         pg.setConfigOptions(antialias=True)
         self.leaf = leaf
         self.app = qtgqt.QtGui.QApplication([])
-        self.area = darea.DockArea()
-        self.win = qtgqt.QtGui.QMainWindow()
 
     def initializePlot(self):
         self.first_run = True
+        self.paused = False
+        self.win = qtgqt.QtGui.QMainWindow()
+        area = darea.DockArea()
         white = (200, 200, 200)
         red = (200, 66, 66); redB = pg.mkBrush(200, 66, 66, 200)
         blue = (6, 106, 166); blueB = pg.mkBrush(6, 106, 166, 200)
         green = (16, 200, 166); greenB = pg.mkBrush(16, 200, 166, 200)
         yellow = (244, 244, 160); yellowB = pg.mkBrush(244, 244, 160, 200)
-             
         self.win.setWindowTitle("Leaf plotter")
-        self.win.resize(1000,800)
-        self.win.setCentralWidget(self.area)
-
-        self.dock1 = darea.Dock("dock 1", size = (1,1))  # give this dock minimum possible size
-        self.dock2 = darea.Dock("dock 2", size = (500,400)) # size is only a suggestion
-        self.area.addDock(self.dock1, "left")
-        self.area.addDock(self.dock2, "bottom", self.dock1)
-        self.widg1 = pg.LayoutWidget()
-        self.lxLabel = qtgqt.QtGui.QLabel("No data")
-        self.gxLabel = qtgqt.QtGui.QLabel("No data")
-        self.saveBtn = qtgqt.QtGui.QPushButton("Save dock state")
-        self.restoreBtn = qtgqt.QtGui.QPushButton("Restore dock state")
+        self.win.resize(1000, 800)
+        self.win.setCentralWidget(area)
+        dock1 = darea.Dock("dock 1", size = (1,1))  # give this dock minimum possible size
+        dock2 = darea.Dock("dock 2", size = (500,400)) # size is only a suggestion
+        area.addDock(dock1, "left")
+        area.addDock(dock2, "bottom", dock1)
+        widg1 = pg.LayoutWidget()
+        self.lxLabel = qtgqt.QtGui.QLabel("No leaf X")
+        self.lyLabel = qtgqt.QtGui.QLabel("No leaf Y")
+        self.gxLabel = qtgqt.QtGui.QLabel("No gps X")
+        self.gyLabel = qtgqt.QtGui.QLabel("No gps Y")
         self.clrBtn = qtgqt.QtGui.QPushButton("Clear")
-        self.restoreBtn.setEnabled(False)
-        self.widg1.addWidget(self.lxLabel, row=0, col=0)
-        self.widg1.addWidget(self.gxLabel, row=0, col=1)
-        self.widg1.addWidget(self.clrBtn, row=0, col=2)
-        self.widg1.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(171, 178, 191);")
-        self.dock1.setStyleSheet("background-color: rgb(18, 20, 23);")
-        self.lxLabel.setStyleSheet("font-family: Monospace; font: 30pt; background-color: rgb(44, 48, 56)")
-        self.dock1.addWidget(self.widg1)
+        self.pauseBtn = qtgqt.QtGui.QPushButton("Pause")
+        widg1.addWidget(self.lxLabel, row=1, col=0)
+        widg1.addWidget(self.lyLabel, row=1, col=1)
+        widg1.addWidget(self.gxLabel, row=2, col=0)
+        widg1.addWidget(self.gyLabel, row=2, col=1)
+        widg1.addWidget(self.clrBtn, row=3, col=0)
+        widg1.addWidget(self.pauseBtn, row=3, col=1)
+        widg1.setStyleSheet("background-color: rgb(40, 44, 52); color: rgb(171, 178, 191);")
+        dock1.setStyleSheet("background-color: rgb(18, 20, 23);")
+        self.gxLabel.setStyleSheet("font-family: Monospace; font: 20pt; color: rgb(6, 106, 166)")
+        self.gyLabel.setStyleSheet("font-family: Monospace; font: 20pt; color: rgb(6, 106, 166)")
+        self.lxLabel.setStyleSheet("font-family: Monospace; font: 20pt; color: rgb(200, 66, 66)")
+        self.lyLabel.setStyleSheet("font-family: Monospace; font: 20pt; color: rgb(200, 66, 66)")
+        dock1.addWidget(widg1)
         self.state = None
         self.widg2 = pg.PlotWidget(title="Plot left 2 (bottom)")
         self.widg2.setAspectLocked(True)
@@ -63,25 +68,33 @@ class PlotHandler(object):
         self.widg2.showGrid(x=True, y=True)
         self.widg2.addItem(self.pltGpsOdom)
         self.widg2.addItem(self.pltLeafOdom)
-        self.dock2.addWidget(self.widg2)
+        dock2.addWidget(self.widg2)
         self.clrBtn.clicked.connect(self.clear)
+        self.pauseBtn.clicked.connect(self.pause)
         self.tGps = pg.TextItem(text = "Gps", color = blue)
         self.tLeaf = pg.TextItem(text = "Leaf odom", color = red)
         self.tstart = pg.TextItem(text = "Start", color = white)
         self.win.show()
 
     def updateFirstPlot(self):
-        self.pltGpsOdom.addPoints(self.leaf.gps_x, self.leaf.gps_y)
-        self.pltLeafOdom.addPoints(self.leaf.leaf_x, self.leaf.leaf_y)
-        if self.first_run == True:
-            self.widg2.addItem(self.tGps)
-            self.widg2.addItem(self.tLeaf)
-            self.widg2.addItem(self.tstart)
-            self.tstart.setPos(self.leaf.gps_x, self.leaf.gps_y)
-            self.first_run = False
-        self.tGps.setPos(self.leaf.gps_x, self.leaf.gps_y)
-        self.tLeaf.setPos(self.leaf.leaf_x, self.leaf.leaf_y)
-        self.gxLabel.setText("x: %9.6f\ny: %9.6f" % (self.leaf.gps_x, self.leaf.gps_y))          
+        if self.paused == False:
+            self.pltGpsOdom.addPoints(self.leaf.gps_x, self.leaf.gps_y)
+            self.pltLeafOdom.addPoints(self.leaf.leaf_x, self.leaf.leaf_y)
+            if self.first_run == True:
+                self.widg2.addItem(self.tGps)
+                self.widg2.addItem(self.tLeaf)
+                self.widg2.addItem(self.tstart)
+                self.tstart.setPos(self.leaf.gps_x, self.leaf.gps_y)
+                self.first_run = False
+            self.tGps.setPos(self.leaf.gps_x, self.leaf.gps_y)
+            self.tLeaf.setPos(self.leaf.leaf_x, self.leaf.leaf_y)
+            self.gxLabel.setText("x: %9.6f" % (self.leaf.gps_x))          
+            self.gyLabel.setText("y: %9.6f" % (self.leaf.gps_y))
+            self.lxLabel.setText("x: %9.6f" % (self.leaf.leaf_x))
+            self.lyLabel.setText("y: %9.6f" % (self.leaf.leaf_y))
+
+    def pause(self):
+        self.paused = not self.paused
 
     def clear(self):
         self.pltGpsOdom.data = self.pltGpsOdom.data[-1:-20:-1]

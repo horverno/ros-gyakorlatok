@@ -6,6 +6,16 @@ Tartalom:
 - Publisher / Subscriber node pythonban
 - rqt_graph
 
+## Előkészületek
+
+Az előző alkalommal letöltött rosbag fájl most is kelleni fog.
+
+```
+mkdir ~/rosbag-gyak
+cd ~/rosbag-gyak
+wget www.sze.hu/~herno/PublicDataAutonomous/leaf-2019-03-13-a-no-lidar.bag
+```
+
 ## Catkin workspace készítése
 Nyissuk meg, a home folderban lévő `.bashrc` fájlt (pl VS code segítségével) és ellenőrizzük, hogy tartalmaz-e egy `source /opt/ros/kinetic/setup.bash` sort valahol a fájl végén.
 
@@ -133,6 +143,23 @@ Vizsgáljuk meg a c++ fájlok működését és a node-ok végrahajtását!
 ## ROS node pythonban
 
 Pythonban nem kell külön a CMakeListset `add_executable(..)` sorral kiegészítenünk. Minden .py fájl, aminek van futtatási joga (`chmod`) és a scripts mappában található, automatikusan node lesz.
+
+A scripts mappába tegyük bele, az előző alkalommal megismert plotter fájlt, és adjunk futtatható jogot.
+
+```
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/1-rosbag-es-topicok/plotterLeaf.py
+sudo chmod +x plotterLeaf.py
+```
+
+A C++-hoz hasonlóan, most már bárhonnan indítható a node.
+
+```
+rosrun gyakorlo_pkg plotterLeaf.py
+```
+
+## Önálló feladat
+
+Jelezzük ki a `/distance` topicot két tizedesjegyig, számként a `plotterLeaf.py` node-ban.
 
 ## További részletek
 
