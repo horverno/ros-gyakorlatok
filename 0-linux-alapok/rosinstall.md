@@ -55,6 +55,11 @@ source ~/.bashrc
 sudo apt install python-rosinstall python-rosinstall-generator python-wstool build-essential
 ```
 
-Részletesebb leírás:
+## Részletesebb leírás
+
 - http://wiki.ros.org/kinetic/Installation/Ubuntu
 
+## Kezdőoldal
+
+GitHub Pages kezdőoldal: 
+[horverno.github.io/ros-gyakorlatok](https://horverno.github.io/ros-gyakorlatok/)

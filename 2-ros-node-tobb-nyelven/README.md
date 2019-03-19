@@ -163,4 +163,9 @@ Jelezzük ki a `/distance` topicot két tizedesjegyig, számként a `plotterLeaf
 
 ## További részletek
 
-http://wiki.ros.org/ROS/Tutorials
+[wiki.ros.org/ROS/Tutorials](http://wiki.ros.org/ROS/Tutorials)
+
+## Kezdőoldal
+
+GitHub Pages kezdőoldal: 
+[horverno.github.io/ros-gyakorlatok](https://horverno.github.io/ros-gyakorlatok/)

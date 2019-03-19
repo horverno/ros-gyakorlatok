@@ -1,4 +1,5 @@
-# Az ROS használatának előkövetelményei:
+# Az ROS használatának előkövetelményei
+
 - Linux ismeretek - [hun](https://github.com/horverno/sze-academic-rpi/blob/master/linuxtut.md)
 - Terminal kezelése - [hun](https://github.com/horverno/sze-academic-rpi/blob/master/linuxtut.md)
 - Git kezelése - [hun](https://github.com/horverno/sze-academic-rpi/blob/master/gittut.md), [eng](https://lab.github.com/)
@@ -8,3 +9,8 @@
 
 Ezezeket legegyszerűbb elsajátítani a Raspberry Pi-hez készült segédanyaggal: 
 [github.com/horverno/sze-academic-rpi](https://github.com/horverno/sze-academic-rpi).
+
+## Kezdőoldal
+
+GitHub Pages kezdőoldal: 
+[horverno.github.io/ros-gyakorlatok](https://horverno.github.io/ros-gyakorlatok/)

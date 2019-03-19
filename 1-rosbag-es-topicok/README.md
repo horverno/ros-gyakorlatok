@@ -293,3 +293,8 @@ Vizsgáljuk meg a fájokat `VS code` segítségével (`cd ~/rosbag-gyak`, ha nem
 code .
 ```
 Ez egy VS code környezetet nyit meg, az aktuális mappával, majd visszaadja a terminal prompt-ot.
+
+## Kezdőoldal
+
+GitHub Pages kezdőoldal: 
+[horverno.github.io/ros-gyakorlatok](https://horverno.github.io/ros-gyakorlatok/)
