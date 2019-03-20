@@ -273,9 +273,13 @@ import pyqtgraph
 Amennyiben `ModuleNotFoundError`-t kapunk telepítsük a két package-t:
 
 ```
+sudo apt install python3-pip
+pip3 install numpy rospkg pyqt5 pyqtgraph PyYaml
+```
+Vagy python 2:
+```
 sudo apt install python-pip
-pip install pyqt5
-pip install pyqtgraph
+pip install pyqt5 pyqtgraph
 ```
 
 A Nissan leaf helyzetét több fajta módon is számíthatjuk. Lehet a bicikli kinematikai modellel és lehet a GPS alapján. A gépjármű-szerű (négy kerékkel rendelkező, első tengelyen kormányozható) robot egyszerűsített kinematikai leírására használhatjuk a bicikli modellt, ami könnyen szmolható, azonban az idő függvényében egyre nagyobb pontatlansága lesz. Ez a `/leaf/odom` topicon érhető el a Leaf .bag fájl visszajátszásával. A GPS pozíció magától érthetődőbb, szerencsére a mérés során egy különlegesen pontos GPS-t használtunk, ez a `/gps/odom` topicon érhető el. 
