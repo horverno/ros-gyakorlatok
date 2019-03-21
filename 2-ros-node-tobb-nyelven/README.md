@@ -22,6 +22,14 @@ Nyissuk meg, a home folderban lévő `.bashrc` fájlt (pl VS code segítségéve
 ```
 code ~/.bashrc
 ```
+
+*Opcionális*: Elképzelhető, hogy a `catkin build` nincs telepítve a gépünkön, csak a régi `catkin_make`. Ekkor telepítsük a következő paranccsal.
+```
+sudo apt-get install python-catkin-tools
+```
+**Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot. A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével.
+
+
 Hozzunk létre egy gyakolró catkin workspace-t:
 
 ```
@@ -47,6 +55,13 @@ Eddig így néz ki a workspace.
 
 ![vs-code-01](vs-code-01.png)
 
+**Megjegyzés**, hogy a fenti képhez hasonlót kapjunk `ctr` + `k`, majd `ctr` + `t` segítségével válthatunk egy világosabb témára illetve az Extension gommb segítségével (`ctr` + `shift` + `x`) telepíthetünk hasznos kiegészítőket, mint például:
+
+- C/C++ (_ms-vscode.cpptools_) ![cpp](vs-cpp-ext.png)
+- Python (_ms-python.python_) ![py](vs-py-ext.png)
+- Cmake (_twxs.cmake_) ![cmake](vs-cmake-ext.png)
+- Material Icon Theme (_pkief.material-icon-theme_) ![icn](vs-icon-ext.png)
+
 ## C++ fájlok beszerzése
 
 A `gyakorlo_ws/src/gyakorlo_pkg/src` mappába töltsünk le két cpp fájlt.
@@ -59,7 +74,9 @@ wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/2-ros-nod
 
 ![vs-code-02-cpp](vs-code-02.png)
 
-Annak érdekében, hogy a VS code automatikus kiegészítsé funkciója jól működjön, a hiányzónak jelölt incudnál, (`ros/ros.h`), kattintsunk a sárga ikonra, majd `Edit "includepath" settings` és egészítsük ki egy veszzővel, plusz a `"/opt/ros/kinetic/include"` sorral. Így már megtalálja az ROS-specifikus dolgokat.
+
+
+Feltételezve a C/C++  kiegészítőt, annak érdekében, hogy a VS code automatikus kiegészítés funkciója jól működjön, a hiányzónak jelölt incudenál, (`ros/ros.h`), kattintsunk a sárga villanykörte ikonra, majd `Edit "includepath" settings` és egészítsük ki egy veszzővel, plusz a `"/opt/ros/kinetic/include"` sorral. Így már megtalálja az ROS-specifikus dolgokat. (_Ekkor gyakolatilag a `.vscode` könyvtárban található `c_cpp_properties.json`-t szerkesztjük át._)
 
 ![vs-code-03-include](vs-code-03.png)
 
@@ -124,6 +141,7 @@ target_link_libraries(csak_kiiras_node ${catkin_LIBRARIES})
 ```
 
 Nyissuk meg a `.bashrc` fájlt (`code ~/.bashrc`) és adjuk hozzá a `source ~/gyakorlo_ws/devel/setup.bash` sort. Innentől kezdve bárhonnan elérhetjük a workspace-t, és bárhonnan elindíthatjuk a a package különböző node-jait `rosrun` segítségével. 
+Buildeljük a `catkin build` segítségével, most új terminalban vagy `source ~/.bashrc` után elérhetők lesznek a node-ok. 
 
 ```
 cd /

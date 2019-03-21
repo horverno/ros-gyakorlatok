@@ -62,7 +62,7 @@ int main(int argc, char **argv)
   while (ros::ok())
   {
     std_msgs::Float32 dist;
-    dist.data = sqrt(pow((gX - lX), 2) + pow((gX - lX), 2));
+    dist.data = sqrt(pow((gX - lX), 2) + pow((gY - lY), 2));
     chatter_pub.publish(dist);
     ros::spinOnce();
     loop_rate.sleep();

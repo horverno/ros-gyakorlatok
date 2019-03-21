@@ -14,9 +14,9 @@ Az leckék magyar nyelvűek. :mortar_board:
 
 ## Gyakorlat
 
-0. [Linux alapok](0-linux-alapok): Terminal kezelése, Git kezelése, VS code, ROS telepítése
-1. [Rosbag és topicok gyakolat](1-rosbag-es-topicok): Rosbag visszajátszása, Topicok kezelése, Topic tartalmának elérése pythonból, `rviz`, `rqt_plot`, Rosbag készítés
-2. [ROS node-ok készítése pythonban és C++-ban](2-ros-node-tobb-nyelven), ROS node-ok, `rqt_graph`, Publisher / Subscriber node pythonban, Publisher / Subscriber node C++-ban
+- [0. Linux alapok](0-linux-alapok): Terminal kezelése, Git kezelése, VS code, ROS telepítése
+- [1. Rosbag és topicok gyakolat](1-rosbag-es-topicok): Rosbag visszajátszása, Topicok kezelése, Topic tartalmának elérése pythonból, `rviz`, `rqt_plot`, Rosbag készítés
+- [2. ROS node-ok készítése pythonban és C++-ban](2-ros-node-tobb-nyelven): ROS node-ok, `rqt_graph`, Publisher / Subscriber node pythonban, Publisher / Subscriber node C++-ban
 
 
 ## Követelmények
@@ -27,3 +27,6 @@ A gyakorlatok során Ubuntu MATE 16.04 / Ubuntu 16.04 operációs rendszert hasz
 
 A repository GitHub Pages formátumban is elérhető: 
 [horverno.github.io/ros-gyakorlatok](https://horverno.github.io/ros-gyakorlatok/)
+
+A repository GitHub elérhetősége pedig:
+[github.com/horverno/ros-gyakorlatok](https://github.com/horverno/ros-gyakorlatok/)

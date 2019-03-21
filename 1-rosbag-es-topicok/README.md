@@ -38,7 +38,7 @@ ls -l --block-size=M
 
 Nézzük meg a következő videót, ez a Turtlebot `.bag` fájl rögzítésekor készült: [youtu.be/QwagQFvhbNU](https://www.youtube.com/watch?v=QwagQFvhbNU) 
 
-[![turtle-yt](turtle-youtube.png)](https://www.youtube.com/watch?v=QwagQFvhbNU) []
+[![turtle-yt](turtle-youtube.png)](https://www.youtube.com/watch?v=QwagQFvhbNU)
 
 _Megjegyzés_: www.sze.hu/~herno/PublicDataAutonomous linken további `.bag` fájlok találhatóak.
 
@@ -212,7 +212,7 @@ rosrun rqt_plot rqt_plot
 
 ![rqtp](rqtplot-small.png)
 
-További információ: http://wiki.ros.org/rqt_plot
+További információ: [wiki.ros.org/rqt_plot](http://wiki.ros.org/rqt_plot)
 
 <a name="rviz"></a>
 
@@ -229,7 +229,7 @@ Például így nézzen ki:
 
 ![rviz](rviz-small.png)
 
-További információ: http://wiki.ros.org/rviz
+További információ: [wiki.ros.org/rviz](http://wiki.ros.org/rviz)
 
 <a name="python"></a>
 
@@ -249,7 +249,7 @@ def odometryCallBack(msg):
 def imuCallBack(msg):
     print("imu(xyz):  %8.4f %8.4f %8.4f" % (msg.linear_acceleration.x, msg.linear_acceleration.y, msg.linear_acceleration.z))
 
-rospy.init_node("/listener", anonymous=True)
+rospy.init_node("listener", anonymous=True)
 rospy.Subscriber("/odom", navmsg.Odometry, odometryCallBack)
 rospy.Subscriber("/imu", senmsg.Imu, imuCallBack)
 rospy.spin()
@@ -284,6 +284,10 @@ pip install pyqt5 pyqtgraph
 
 A Nissan leaf helyzetét több fajta módon is számíthatjuk. Lehet a bicikli kinematikai modellel és lehet a GPS alapján. A gépjármű-szerű (négy kerékkel rendelkező, első tengelyen kormányozható) robot egyszerűsített kinematikai leírására használhatjuk a bicikli modellt, ami könnyen szmolható, azonban az idő függvényében egyre nagyobb pontatlansága lesz. Ez a `/leaf/odom` topicon érhető el a Leaf .bag fájl visszajátszásával. A GPS pozíció magától érthetődőbb, szerencsére a mérés során egy különlegesen pontos GPS-t használtunk, ez a `/gps/odom` topicon érhető el. 
 Vizualizáljuk a két topicot a [plotterLeaf.py](plotterLeaf.py) segítségével.
+
+```
+python plotterLeaf.py
+```
 
 ![plot](py-plotter-leaf.png)
 
