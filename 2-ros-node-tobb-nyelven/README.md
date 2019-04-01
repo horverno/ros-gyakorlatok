@@ -27,7 +27,8 @@ code ~/.bashrc
 ```
 sudo apt-get install python-catkin-tools
 ```
-**Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot. A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével.
+**Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot. A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével. erről bővebben: például a [catkin-tools.readthedocs.io](https://catkin-tools.readthedocs.io/) és a 
+[catkin-tools.readthedocs.io/en/latest/migration.html](https://catkin-tools.readthedocs.io/en/latest/migration.html) oldalakon olvashattok.
 
 
 Hozzunk létre egy gyakolró catkin workspace-t:
@@ -178,6 +179,23 @@ rosrun gyakorlo_pkg plotterLeaf.py
 ## Önálló feladat
 
 Jelezzük ki a `/distance` topicot két tizedesjegyig, számként a `plotterLeaf.py` node-ban.
+
+### Segítség az önálló feladathoz.
+
+Ha nem tudjuk a típust, akkor nézzük meg `rostopic type` illetve, ha összetett lett volna a típus akkor `rosmsg show`, de ez most nem kell.
+
+``` python 
+import std_msgs.msg as rosmsg # már importálva
+rospy.Subscriber("/disctance", rosmsg.típus, self.sajátCallback) # feliratkozás
+
+def sajátCallback(self, msg):
+    # itt adhatunk át egy osztályváltozót
+
+class PlotHandler >> saját QLabel
+                  >> frissítése setText-el
+
+```
+
 
 ## További részletek
 
