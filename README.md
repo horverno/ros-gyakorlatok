@@ -8,6 +8,7 @@ Az leckék magyar nyelvűek. :mortar_board:
 
 ## Elmélet
 
+- [Alapok (git)](https://docs.google.com/presentation/d/e/2PACX-1vTOonWzKo2PeriFardAwNUnkui6aoQZ0PISZtTPSwuySbjWCSXxlYTdqGH9qqPii6WBGHk__wjbECvS/pub?start=false&loop=false&delayms=3000) _(online google prezentáció magyarul)_, [Alapok (verziókezelés)](https://drive.google.com/file/d/1W-k79H_ccaByDzJhiGij5x25in8Fiyso/view?usp=sharing) _(részletes leírás magyarul)_, 
 - [Bevezetés](https://docs.google.com/presentation/d/e/2PACX-1vTl-60emc4HDBYLlGXbSuV7m7T3cbYpqxPU1MnaKxG9J-2XBD9-8eQyKNB0JffPFcOzRMbtXGASlm2x/pub?start=false&loop=false&delayms=3000) _(online google prezentáció magyarul)_
 - [Szenzorok ROS-ben](https://docs.google.com/presentation/d/e/2PACX-1vQbXSe4cb-aYgWNNiUF1PHJBZrwl0keWantbFjTe94zm1A9cVGqmWKC4lHCSUr4y7vfq1PrJ2mP8XqP/pub?start=false&loop=false&delayms=3000) _(online google prezentáció magyarul)_
 
