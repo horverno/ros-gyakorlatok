@@ -7,6 +7,10 @@
 - [Topicok elérése - rviz](#rviz)
 - [Topicok elérése - saját python kóddal](#python)
 
+## Videó
+
+A gyakorlat a jobb érthetőség és az otthoni feldolgozás miatt akár videóként is megtekinthető. A videó szöveges magyarázat nélküli, rövidített, cserébe mutatja a parancsok kiadásától elvárható működést: [youtu.be/Hu7YseOh3qk](https://www.youtube.com/watch?v=Hu7YseOh3qk)
+
 <a name="elo"></a>
 
 ## Előkészületek
