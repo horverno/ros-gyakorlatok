@@ -22,7 +22,12 @@ Az leckék magyar nyelvűek. :mortar_board:
 
 ## Követelmények
 
-A gyakorlatok során Ubuntu MATE 16.04 / Ubuntu 16.04 operációs rendszert használunk ROS Kinetic Kame mellett.
+A gyakorlatokon 2019 szeptembere óta a következő rendszereket használjuk:
+- Ubuntu 18.04 Bionic *(opcionálisan Ubuntu Mate 18.04)*
+- ROS Melodic
+- CUDA 10
+
+~~A gyakorlatok során régen Ubuntu MATE 16.04 / Ubuntu 16.04 operációs rendszert használtunk ROS Kinetic Kame mellett.~~
 
 ## GitHub Pages
 
