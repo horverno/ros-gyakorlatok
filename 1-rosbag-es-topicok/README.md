@@ -36,7 +36,8 @@ wget www.sze.hu/~herno/PublicDataAutonomous/leaf-2019-03-13-a-no-lidar.bag
 Vizsgáljuk meg, hogy tényleg ~46MB méretű-e Turtlebot és ~9MB méretű-e a Leaf `.bag` fájl.
 
 ```
-ls -l
+ls --size 
+ls --size --block-size=M
 ls -l --block-size=M
 ```
 
