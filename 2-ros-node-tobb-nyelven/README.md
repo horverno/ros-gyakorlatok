@@ -29,7 +29,13 @@ sudo apt-get install python-catkin-tools
 ```
 **Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot. A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével. erről bővebben: például a [catkin-tools.readthedocs.io](https://catkin-tools.readthedocs.io/) és a 
 [catkin-tools.readthedocs.io/en/latest/migration.html](https://catkin-tools.readthedocs.io/en/latest/migration.html) oldalakon olvashattok.
-
+A `catkin build` további előnyei:
+- Változások esetén robosztusabb konfiguráció (pl. csomag hozzáadása/eltávolítása, cmake változó módosítása stb. esetén)
+- Könnyebben olvasható kimenet
+- Párhuzamos fordítás, amennyiben a package-k nem függnek egymástól
+- Izolált build a `catkin build package_neve` segítségével
+- `catkin clean` a veszélyes `rm -rf` törlés helyett
+- Hasznos parancsok, mint: `catkin list`, `catkin locate`, `catkin profile`
 
 Hozzunk létre egy gyakolró catkin workspace-t:
 
