@@ -83,7 +83,7 @@ wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/2-ros-nod
 
 
 
-Feltételezve a C/C++  kiegészítőt, annak érdekében, hogy a VS code automatikus kiegészítés funkciója jól működjön, a hiányzónak jelölt incudenál, (`ros/ros.h`), kattintsunk a sárga villanykörte ikonra, majd `Edit "includepath" settings` és egészítsük ki egy veszzővel, plusz a `"/opt/ros/kinetic/include"` sorral. Így már megtalálja az ROS-specifikus dolgokat. (_Ekkor gyakolatilag a `.vscode` könyvtárban található `c_cpp_properties.json`-t szerkesztjük át._)
+Feltételezve a C/C++  kiegészítőt, annak érdekében, hogy a VS code automatikus kiegészítés funkciója jól működjön, a hiányzónak jelölt incudenál, (`ros/ros.h`), kattintsunk a sárga villanykörte ikonra, majd `Edit "includepath" settings` és egészítsük ki egy veszzővel, plusz a `"/opt/ros/melodic/include"` (ill. régebben `"/opt/ros/kinetic/include"`) sorral. *Megjegyzés*: az új felületen lehet, hogy grafikusan kell megadni az `Include path` mezőben. Ezután már megtalálja az ROS-specifikus dolgokat. (_Ekkor gyakolatilag a `.vscode` könyvtárban található `c_cpp_properties.json`-t szerkesztjük át._)
 
 ![vs-code-03-include](vs-code-03.png)
 
