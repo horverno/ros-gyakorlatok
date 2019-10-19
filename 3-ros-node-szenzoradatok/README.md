@@ -14,10 +14,10 @@ Az előző gyakorlatok után továbbhaladva, azok eredményeit felhasználva lé
 ```
 cd ~/rosbag-gyak
 wget www.sze.hu/~herno/PublicDataAutonomous/leaf-2019-09-12-15-10-46-gps-lidar-zala.bag
-wget www.sze.hu/~herno/PublicDataAutonomous/leaf-v1.rviz
+wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/leaf-v1.rviz
 ```
 
-Jelenítsük meg az információkat.
+Jelenítsük meg az információkat. 
 
 ```
 rosbag info leaf-2019-09-12-15-10-46-gps-lidar-zala.bag
@@ -78,9 +78,11 @@ float32[] intensities
 
 <a name="rviz"></a>
 ## rviz
+Jelenítsük meg rviz segítségével az adatokat, `roscore` indítása és `rosbag` visszajátszás után után:
 ```
 rosbag play -l leaf-2019-09-12-15-10-46-gps-lidar-zala.bag
 ```
+Megjelenítés `rviz`-zel:
 
 ```
 rosrun rviz rviz -d ~/rosbag-gyak/leaf-v1.rviz
@@ -88,30 +90,27 @@ rosrun rviz rviz -d ~/rosbag-gyak/leaf-v1.rviz
 
 ![](rviz.png)
 
-```
-$ catkin create pkg using_markers --catkin-deps roscpp visualization_msgs
-```
 
 <a name="pack"></a>
 
 # Package és node készítése egyszerű LIDAR szűrésre, vizualizációra
 
+Készítsük el a gyakorló workspace-t:
+
 ```
 cd ~ ; mkdir -p gyak_ws/src ; cd gyak_ws/src
 ```
-
+Majd ebben a packaget:
 
 ```
 catkin create pkg lidar_tutorial --catkin-deps roscpp pcl_conversions pcl_ros roscpp sensor_msgs visualization_msgs
 ```
 
+Indítsuk a VS code-t (`code .` parancs)
+
 Mentsük le a 3 cpp fájlt:
 ```
-cd gyak_ws/src/lidar_tutorial/src ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/lidar_and_marker.cpp ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/lidar_filter.cpp ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/pub_marker.cpp
-```
-
-```
-code .
+cd ~/gyak_ws/src/lidar_tutorial/src ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/lidar_and_marker.cpp ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/lidar_filter.cpp ; wget https://raw.githubusercontent.com/horverno/ros-gyakorlatok/master/3-ros-node-szenzoradatok/pub_marker.cpp
 ```
 
 
@@ -130,16 +129,24 @@ Megjegyzés a későbbiekben (AutoWare használatakor) hasznos lehet még a köv
 ~/autoware_ws/Autoware/ros/devel/include
 ```
 
+A `CMakeLists.txt` végére a következőket írjuk:
+
 ``` cmake
 add_executable(publish_marker src/pub_marker.cpp)
 target_link_libraries(publish_marker ${catkin_LIBRARIES})
 
 add_executable(basic_lidar_filter src/lidar_filter.cpp)
-target_link_libraries(publish_marker ${catkin_LIBRARIES})
+target_link_libraries(basic_lidar_filter ${catkin_LIBRARIES})
 
 add_executable(lidar_and_marker src/lidar_and_marker.cpp)
 target_link_libraries(lidar_and_marker ${catkin_LIBRARIES})
 ```
+Lépjünk vissza a workspace-be (`cd ~/gyak_ws`), majd buildeljünk:
+
+```
+catkin build
+```
+
 
 Szerkesszük a `~/.bashrc`-t (`code ~/.bashrc`)
 
@@ -201,3 +208,18 @@ int main(int argc, char **argv)
 }
 ```
 
+A egyszerű LIDAR filter node így indítható:
+```
+rosrun lidar_tutorial basic_lidar_filter
+```
+
+
+A marker publikáló node pedig így:
+```
+rosrun lidar_tutorial publish_marker 
+```
+
+A filtert és a markert kombináló node:
+```
+rosrun lidar_tutorial lidar_and_marker 
+```
