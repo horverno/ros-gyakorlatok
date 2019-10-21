@@ -1,9 +1,20 @@
 # ROS szenzoradatok feldolgozása C++ node-al
 
 ## Tartalom
+- [A feladat](#feladat)
 - [Előkészületek](#elo)
 - [Rviz](#rviz)
 - [Package és node készítése egyszerű LIDAR szűrésre, vizualizációra](#pack)
+- [A node-ok futtatása](#run)
+
+<a name="feladat"></a>
+
+## A feladat leírása
+
+Első feladatunk, hogy 3D LIDAR szenzoradatokat tartalmazó rosbag-et játszunk vissza és az adatokon egyszerű akadályfelismerést valósítsunk meg, majd ezt vizualizáljuk. Az akdadályfelismerés naiv, de sokszor működőképes módja, hogy a jármű előtt egy virtuális téglatestben vizsgáljuk, hogy van-e objektumot reprezentáló voxel (3d pixel) / 3d pont. Ezt vizualizáljuk úgy, hogy a kijelölt téglatesbe eső voxeleket külön point cloud-ként hirdessük, illetve a téglatestet is jelöljük zöld illetve piros színnel. Erről illusztráció:
+
+![](rviz-obstacle.png)
+![](rviz-no-obstacle.png)
 
 <a name="elo"></a>
 
@@ -114,7 +125,7 @@ cd ~/gyak_ws/src/lidar_tutorial/src ; wget https://raw.githubusercontent.com/hor
 ```
 
 
-A VS code automatikus kiegészítés funkciója akkor műkidik jól, a hiányzónak jelölt incudenál, (pl. `ros/ros.h`), kattintsunk a sárga villanykörte ikonra, majd `Edit "includepath" settings` részre megyünk és az `Include path` mezőbe a következőke írjuk:
+A VS code automatikus kiegészítés funkciója akkor működik jól, a hiányzónak jelölt incudenál, (pl. `ros/ros.h`), kattintsunk a sárga villanykörte ikonra, majd `Edit "includepath" settings` részre megyünk és az `Include path` mezőbe a következőket írjuk:
 
 ``` yaml
 ${workspaceFolder}/**
@@ -153,9 +164,6 @@ Szerkesszük a `~/.bashrc`-t (`code ~/.bashrc`)
 ```
 source ~/gyak_ws/devel/setup.bash
 ```
-
-![](rviz-obstacle.png)
-![](rviz-no-obstacle.png)
 
 
 Az egyszerű filter (`lidar_filter.cpp`) tartalma a következő:
@@ -208,11 +216,17 @@ int main(int argc, char **argv)
 }
 ```
 
+*Magyarázat*: A `main`-ben feliratkozunk a `points_raw` topicra, ami a nyers LIDAR adatokat tartalmazza, valamint elkezdjük hirdetni a `points_filt` topicot, ebbe kerülnek majd a megszűrt adatok. A `cloud_cb` függvény végzi a szűrést és a `ROS_WARN_STREAM` segítségével jelez, amennyiben objektum van a kijelölt területen. A `cloud_filtered.data.size() > 10` azt jelenti, hogy a szűrt pontfelhő elemszáma nagyobb-e mint 10 voxel (3d pont).
+
+
+<a name="run"></a>
+
+## A node-ok futtatása
+
 A egyszerű LIDAR filter node így indítható:
 ```
 rosrun lidar_tutorial basic_lidar_filter
 ```
-
 
 A marker publikáló node pedig így:
 ```
