@@ -27,7 +27,7 @@ code ~/.bashrc
 ```
 sudo apt-get install python-catkin-tools
 ```
-**Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot. A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével. erről bővebben: például a [catkin-tools.readthedocs.io](https://catkin-tools.readthedocs.io/) és a 
+**Fontos megjegyzés:** Lehetőleg NE használjuk a régi `_make`, hanem az új `catkin build` parancsot (catkin tools). A kettő nagyjából ugyanazt tudja, de nem lehet mixelni őket egy workspace-n belül. Ha mégis ilyesmi történt volna, build előtt tisztítsuk meg `catkin clean` segítségével. erről bővebben: például a [catkin-tools.readthedocs.io](https://catkin-tools.readthedocs.io/) és a 
 [catkin-tools.readthedocs.io/en/latest/migration.html](https://catkin-tools.readthedocs.io/en/latest/migration.html) oldalakon olvashattok.
 A `catkin build` további előnyei:
 - Változások esetén robosztusabb konfiguráció (pl. csomag hozzáadása/eltávolítása, cmake változó módosítása stb. esetén)
@@ -42,10 +42,10 @@ Hozzunk létre egy gyakolró catkin workspace-t:
 ```
 mkdir -p ~/gyakorlo_ws/src
 cd ~/gyakorlo_ws/
-catkin build
+catkin init
 ```
 
-Ha `ls` paranccsal listázzuk a könyvtár tartalmát, a tipikus workspace felépítést láthatjuk.
+Ha `ls` paranccsal listázzuk a könyvtár tartalmát, a tipikus workspace felépítést láthatjuk. (Először csak az `src`-t, de build után a többi is meg fog jelenni.)
 
 ```
 build  devel  logs  src
@@ -55,7 +55,7 @@ Most készítsük el a `gyakorlo_pkg` nevű pacake-t, ami majd több node-ot tar
 
 ```
 cd ~/gyakorlo_ws/src
-catkin_create_pkg gyakorlo_pkg nav_msgs std_msgs rospy roscpp
+catkin create pkg gyakorlo_pkg --catkin-deps nav_msgs std_msgs rospy roscpp
 code .
 ```
 Eddig így néz ki a workspace.
