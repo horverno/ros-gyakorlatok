@@ -15,8 +15,8 @@ Az leckék magyar nyelvűek. :mortar_board:
 
 ## Gyakorlat
 
-- [0. Linux alapok](0-linux-alapok): Terminal kezelése, Git kezelése, VS code, ROS telepítése, Hasznos (angol nyelvű) ROS oktatóanyagok [[videó](https://www.youtube.com/watch?v=Hu7YseOh3qk)]
-- [1. Rosbag és topicok gyakolat](1-rosbag-es-topicok): Rosbag visszajátszása, Topicok kezelése, Topic tartalmának elérése pythonból, `rviz`, `rqt_plot`, Rosbag készítés
+- [0. Linux alapok](0-linux-alapok): Terminal kezelése, Git kezelése, VS code, ROS telepítése, Hasznos (angol nyelvű) ROS oktatóanyagok 
+- [1. Rosbag és topicok gyakolat](1-rosbag-es-topicok): Rosbag visszajátszása, Topicok kezelése, Topic tartalmának elérése pythonból, `rviz`, `rqt_plot`, Rosbag készítés, [[videó](https://www.youtube.com/watch?v=Hu7YseOh3qk)]
 - [2. ROS node-ok készítése pythonban és C++-ban](2-ros-node-tobb-nyelven): ROS node-ok, `rqt_graph`, Publisher / Subscriber node pythonban, Publisher / Subscriber node C++-ban
 - [3. ROS szenzoradatok feldolgozása C++ node-al](3-ros-node-szenzoradatok): ROS node-ok írása, `visualization_msgs`, LIDAR szenzoradatok: `sensor_msgs/PointCloud2`, `sensor_msgs/LaserScan`, stb.
 
