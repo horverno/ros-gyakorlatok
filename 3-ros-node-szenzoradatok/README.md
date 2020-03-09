@@ -114,7 +114,7 @@ cd ~ ; mkdir -p gyak_ws/src ; cd gyak_ws/src
 Majd ebben a packaget:
 
 ```
-catkin create pkg lidar_tutorial --catkin-deps roscpp pcl_conversions pcl_ros roscpp sensor_msgs visualization_msgs
+catkin create pkg lidar_tutorial --catkin-deps roscpp pcl_conversions pcl_ros sensor_msgs visualization_msgs
 ```
 
 Indítsuk a VS code-t (`code .` parancs)
