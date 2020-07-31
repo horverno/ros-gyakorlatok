@@ -3,8 +3,8 @@
 Ha a `roscore` parancsra command not found a válasz, telepítsük az ROS-t.
 
 A leírás következő rendszereket feltételezi:
-- Ubuntu MATE 16.04 vagy Ubuntu 16.04
-- ROS Kinetic (*ez fog települni*)
+- Ubuntu MATE 18.04 vagy Ubuntu 18.04
+- ROS Melodic (*ez fog települni*)
 
 Adjuk ki a következő parancsokat terminalból:
 
