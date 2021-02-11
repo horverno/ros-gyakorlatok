@@ -1,6 +1,9 @@
 # Az ROS használatának előkövetelményei
 
 - Linux ismeretek - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/linuxtut.md)]
+  - [[eng](https://industrial-training-master.readthedocs.io/en/melodic/_source/prerequisites/Navigating-the-Ubuntu-GUI.html)] - ROS training - 0.1 Intro to Ubuntu GUI
+  - [[eng](https://industrial-training-master.readthedocs.io/en/melodic/_source/prerequisites/Exploring-the-Linux-File-System.html)] - ROS training - 0.2 The Linux File System
+  - [[eng](https://industrial-training-master.readthedocs.io/en/melodic/_source/prerequisites/The-Linux-Terminal.html)] - ROS training - 0.3 Using the Terminal
 - Terminal kezelése - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/linuxtut.md)]
 - Git kezelése - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/gittut.md)], [[eng](https://lab.github.com/)]
 - VS code - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/vscode.md)], [[vid](https://www.youtube.com/watch?v=QKFjbnWpQ-E)]
