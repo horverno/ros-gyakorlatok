@@ -5,7 +5,10 @@
   - [[eng](https://industrial-training-master.readthedocs.io/en/melodic/_source/prerequisites/Exploring-the-Linux-File-System.html)] - ROS training - 0.2 The Linux File System
   - [[eng](https://industrial-training-master.readthedocs.io/en/melodic/_source/prerequisites/The-Linux-Terminal.html)] - ROS training - 0.3 Using the Terminal
 - Terminal kezelése - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/linuxtut.md)]
-- Git kezelése - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/gittut.md)], [[eng](https://lab.github.com/)]
+- Git kezelése - 
+  - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/gittut.md)] - Beadandó leírás, Git és GitHub
+  - [[hun](https://github.com/firstcontributions/first-contributions/blob/master/translations/README.hu.md)] - GitHub first-contributions magyar fordítás
+  - [[eng](https://lab.github.com/)] - GitHub Learning Lab
 - VS code - [[hun](https://github.com/horverno/sze-academic-rpi/blob/master/vscode.md)], [[vid](https://www.youtube.com/watch?v=QKFjbnWpQ-E)]
 - ROS telepítése - [[hun](rosinstall.md)], [[eng](http://wiki.ros.org/kinetic/Installation/Ubuntu)]
 - Alap robotikai ismeretek [[eng](https://github.com/AtsushiSakai/PythonRobotics)]
