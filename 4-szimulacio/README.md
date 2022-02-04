@@ -4,7 +4,7 @@ A szimuláció alapjául a következő tutorial szolgál: https://github.com/lin
 
 A gyakorlatról készült videó itt tekinthtó meg:
 
-<img src="others/yt01.png" />
+<img src="others/yt01.png" width="400px"/>
 
 ## Telepítés
 
@@ -34,7 +34,7 @@ Később a `bashrc`-ből törölhető ez a sor, nyissuk meg vs code-ból: `code 
 
 ## Egy összetettebb példa
 
-Nyissuk meg a szimulátort:
+Nyissuk meg a szimulátort (az első indítás gyakran *lassú*, de aztán relatív gyors lesz):
 
 ```
 roslaunch racecar_gazebo racecar.launch
