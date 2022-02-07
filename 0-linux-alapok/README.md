@@ -43,3 +43,4 @@ GitHub Pages kezdőoldal:
   - [12: Motion Control](https://www.youtube.com/watch?v=fQJpAVRQBrI&amp;list=PLL57Sz4fhxLpCXgN0lvCF7aHAlRA5FoFr&amp;index=12&amp;ab_channel=ApexAI)
   - [13: Data Storage and Analytics](https://www.youtube.com/watch?v=vinP0zrnkyU&amp;list=PLL57Sz4fhxLpCXgN0lvCF7aHAlRA5FoFr&amp;index=13&amp;ab_channel=ApexAI)
   - [14: HD Maps](https://www.youtube.com/watch?v=cl9m6O4Yt0Y&amp;list=PLL57Sz4fhxLpCXgN0lvCF7aHAlRA5FoFr&amp;index=14&amp;ab_channel=ApexAI)
+- [F1/10 ROS](https://linklab-uva.github.io/autonomousracing/page3.html#content10-u)
