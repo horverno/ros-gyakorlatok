@@ -6,9 +6,9 @@ Két Gazebo alapú szimulációt fogunk megismerni. A Gazebo az ROS-által legin
 
 Első esetben szimuláció alapjául a következő tutorial szolgál: https://github.com/linklab-uva/f1tenth_gtc_tutorial. Itt azonban nem csak szimuláció, hanem valós jármű is van, sokkal több témát érintve. Mi most ebből csak a szimulátort használjuk. A szimulátorban egy kis méretű (F1 jármű tizede) robotjárművet fogunk navigálni.
 
-A gyakorlatról készült videó itt tekinthtó meg:
+A gyakorlatról készült [videó](https://www.youtube.com/watch?v=wdRD2X2hpKI) itt tekinthtó meg:
 
-<img src="others/yt01.png" width="400px"/>
+<a href="https://www.youtube.com/watch?v=wdRD2X2hpKI"><img src="others/yt01.png" width="400px"/></a>
 
 ## Telepítés F1/10
 
@@ -87,7 +87,7 @@ roslaunch console navigation.launch
 ## Telepítés Prius
 
 ```
-cd sim_ws/src/
+cd ~/sim_ws/src/
 git clone https://github.com/osrf/car_demo
 catkin build car_demo
 source ~/.bashrc
