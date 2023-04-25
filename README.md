@@ -6,6 +6,17 @@ The lessons are in **hungarian**._ :mortar_board:
 Ez az repository a Széchenyi István Egyetem (SZE) különböző ROS gyakorlatait és elméletét tartalmazza.
 Az leckék magyar nyelvűek. :mortar_board:
 
+
+# Archive
+
+{: .warning }
+> Ez egy archívált tananyag, folytatása a [sze-info.github.io/arj](https://sze-info.github.io/arj) címen érhető el, a jelenlegi tananyag már **nem** frissül.
+
+
+<br><br><br>
+## [sze-info.github.io/arj](https://sze-info.github.io/arj)
+
+<br><br><br>
 ## Elmélet
 
 - [Linkek ROS és linux tanuláshoz](0-linux-alapok)
