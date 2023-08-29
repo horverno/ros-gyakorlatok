@@ -8,6 +8,8 @@ Az leckék magyar nyelvűek. :mortar_board:
 
 
 # Archive
+Archívált tananyag
+
 
 {: .warning }
 > Ez egy archívált tananyag, folytatása a [sze-info.github.io/arj](https://sze-info.github.io/arj) címen érhető el, a jelenlegi tananyag már **nem** frissül.
