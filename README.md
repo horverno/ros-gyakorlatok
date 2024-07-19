@@ -1,19 +1,20 @@
 # ROS gyakorlatok repository
 
 _This repository contains ROS excersices and theory teached at the Széchenyi István University (SZE) located in Győr, Hungary.
-The lessons are in **hungarian**._ :mortar_board:
+The lessons are in **hungarian**._
 
 Ez az repository a Széchenyi István Egyetem (SZE) különböző ROS gyakorlatait és elméletét tartalmazza.
-Az leckék magyar nyelvűek. :mortar_board:
+Az leckék magyar nyelvűek. 
 
 
-# Archive
+# Archive ❌
 Archívált tananyag
 
+❗❗❗
 
-{: .warning }
 > Ez egy archívált tananyag, folytatása a [sze-info.github.io/arj](https://sze-info.github.io/arj) címen érhető el, a jelenlegi tananyag már **nem** frissül.
 
+❗❗❗
 
 <br><br><br>
 ## [sze-info.github.io/arj](https://sze-info.github.io/arj)
