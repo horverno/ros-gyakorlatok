@@ -12,7 +12,7 @@ Archívált tananyag
 
 ❗❗❗
 
-> Ez egy archívált tananyag, folytatása a [sze-info.github.io/arj](https://sze-info.github.io/arj) címen érhető el, a jelenlegi tananyag már **nem** frissül.
+> Ez egy archívált tananyag, folytatása a [sze-info.github.io/ajr](https://sze-info.github.io/ajr) címen érhető el, a jelenlegi tananyag már **nem** frissül.
 
 ❗❗❗
 
