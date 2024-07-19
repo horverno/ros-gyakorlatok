@@ -17,7 +17,7 @@ Archívált tananyag
 ❗❗❗
 
 <br><br><br>
-## [sze-info.github.io/arj](https://sze-info.github.io/arj)
+## [sze-info.github.io/ajr](https://sze-info.github.io/ajr)
 
 <br><br><br>
 ## Elmélet
